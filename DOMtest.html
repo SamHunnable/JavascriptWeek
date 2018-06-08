@@ -1,0 +1,19 @@
+<html>
+
+<script>
+
+function thing() {
+	for (var i = 0 ; i < window.document.forms[0].elements.length ; i++) {
+		window.document.forms[0].elements[i].value = "hello";
+	}
+}
+
+</script>
+
+<form>
+<input><br>
+<input><br>
+<input><br>
+<input type="button" onclick="thing()">
+</form>
+</html>

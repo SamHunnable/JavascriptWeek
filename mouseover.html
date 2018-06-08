@@ -1,0 +1,34 @@
+<html>
+<script>
+function up() {
+	var A = parseInt(window.document.f.A.value);
+	A+=1;
+	window.document.f.A.value=A;
+}
+
+function down() {
+	window.document.f.A.value-=1;
+
+}
+
+function upenter() {
+	window.document.f.B.value="Going up";
+}
+
+function downenter() {
+	window.document.f.B.value="Going down";
+}
+
+function exit() {
+	window.document.f.B.value="Going nowhere";
+}
+
+</script>
+
+<form name="f" >
+<input name="A" value = "0">
+<input name="B" value = "0"><br>
+<input type = "button" value="Add" onmousemove = "up()" onmouseenter = "upenter()" onmouseleave="exit()" style="height:300px;width:300">
+<input type = "button" value="Minus" onmousemove = "down()" onmouseenter = "downenter()" onmouseleave="exit()" style="height:300px;width:300">
+</form>
+</html>

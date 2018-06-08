@@ -1,0 +1,33 @@
+<html>
+
+<script>
+
+function MyMove() {
+	var s=window.document.getElementById("A");
+	s.innerHTML = window.document.getElementById("box").value;
+	s.style.top=window.event.clientY;
+	s.style.left=window.event.clientX;
+}
+
+function gotPaint(colour) {
+	var s = window.document.getElementById("A");
+	//var change = parseString(colour);
+	//s.style.color = "red";
+	s.style.color = colour;
+}
+
+
+</script>
+<body onmousemove="MyMove()">
+<span id="A" style="position:absolute;top:0;left:0" >
+QA Consulting
+</span>
+
+<input type="text" id="box" style="position:absolute;top:325;left:250">
+<input id = "red" type = "button" onmouseenter = "gotPaint('red')" style="height:200px;width:200;background-Color:red;position:absolute;top:0;left:0" >
+<input id = "blue" type = "button" onmouseenter = "gotPaint('blue')" style="height:200px;width:200;background-Color:blue;position:absolute;top:500;left:0" >
+<input id = "green" type = "button" onmouseenter = "gotPaint('green')" style="height:200px;width:200;background-Color:green;position:absolute;top:0;left:500" >
+<input id = "yellow" type = "button" onmouseenter = "gotPaint('yellow')" style="height:200px;width:200;background-Color:yellow;position:absolute;top:500;left:500" >
+
+</body>
+</html>

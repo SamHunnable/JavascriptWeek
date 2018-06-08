@@ -1,0 +1,25 @@
+<html>
+<script>
+
+Function MyMove() {
+	
+	var Fsize = 12;
+	var text = window.document.getElementById("text");
+	
+	if(window.event.ctrlKey) {
+		Fsize++;
+	}
+	if(window.event.ctrlKey) {
+		Fsize--;
+	}
+	text.style.fontSize=Fsize;
+
+}
+
+</script>
+
+<span id="text">
+hello
+</span>
+
+</html>

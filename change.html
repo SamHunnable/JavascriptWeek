@@ -1,0 +1,67 @@
+<html>
+<script>
+function MSG() {
+	var Bill, Paid, Change, Note;
+	if (window.document.f.A.value=="") {
+		window.alert("Enter a Bill amount");
+		window.document.f.A.focus();
+	}
+	else if (window.document.f.B.value=="") {
+		window.alert("Enter the cash paid");
+		window.document.f.B.focus();
+	}
+	else {
+		Bill=parseInt(window.document.f.A.value);
+		Paid=parseInt(window.document.f.B.value);
+		Change = Paid - Bill;
+		
+		NoteCount = TotalNote(Change,50);
+		window.document.f.fifty.value=NoteCount;
+		Change = Modulus(Change,50);
+		
+		NoteCount = TotalNote(Change,20);
+		window.document.f.twenty.value=NoteCount;
+		Change = Modulus(Change,20);
+		
+		NoteCount = TotalNote(Change,10);
+		window.document.f.ten.value=NoteCount;
+		Change = Modulus(Change,10);
+		
+		NoteCount = TotalNote(Change,5);
+		window.document.f.five.value=NoteCount;
+		Change = Modulus(Change,5);
+		
+		NoteCount = TotalNote(Change,2);
+		window.document.f.two.value=NoteCount;
+		Change = Modulus(Change,2);
+		
+		NoteCount = TotalNote(Change,1);
+		window.document.f.one.value=NoteCount;
+	}	
+}
+
+function TotalNote(Change, Note) {
+	return Math.floor(Change/Note);
+}
+
+function Modulus(Change, Note) {
+	Change = Change%Note;
+	return Change;
+}
+
+</script>
+<h1> Welcome to my change calculating website</h1>
+<form name="f">
+Bill : <input name="A"><br>
+Amount Paid : <input name="B"><br>
+<input type = "button" value="Calculate" onclick = "MSG()"><br>
+
+£50 :<input name="fifty" value = "0"><br>
+£20 :<input name="twenty" value = "0"><br>
+£10 :<input name="ten" value = "0"><br>
+£5 :<input name="five" value = "0"><br>
+£2 :<input name="two" value = "0"><br>
+£1 :<input name="one" value = "0"><br>
+
+</form>
+</html>

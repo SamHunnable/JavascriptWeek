@@ -1,0 +1,62 @@
+<html>
+<script>
+function BackgroundChange(obj) {
+	obj.style.backgroundColor="blue";
+}
+
+function BackgroundChangeBack(obj) {
+	obj.style.backgroundColor="white";
+}
+
+function MyReveal(name) {
+	//window.document.getElementById(obj).style.visibility = "visible";
+	//obj.style.visibility = "visible";
+	//window.document.getElementById("countries").style.visibility = "visible";
+	//window.document.getElementById("test").value = "reveal ran" + obj;	
+	if (name == "countries") {
+		window.document.getElementById("countries").style.visibility = "visible";
+	}
+	if (name == "sports") {
+		window.document.getElementById("sports").style.visibility = "visible";
+	}
+}
+
+function MyCollapse(name) {
+	if (name == "countries") {
+		window.document.getElementById("countries").style.visibility = "hidden";
+	}
+	if (name == "sports") {
+		window.document.getElementById("sports").style.visibility = "hidden";
+	}
+}
+
+function GetImage(picture) {
+	window.document.getElementById('pic').src=picture;	
+}
+</script>
+
+<span id="A" style="position:absolute;top:30;left:750;font-size:150%;" onmouseenter = "MyReveal('countries')" onmouseleave="MyCollapse('countries')"  >
+Countries
+<span id="countries" style="visibility:hidden" > <br>
+<span id="uk" onmouseenter="BackgroundChange(this)" onmouseleave="BackgroundChangeBack(this)" onclick="GetImage('uk.png')" > UK </span> <br>
+<span id="usa" onmouseenter="BackgroundChange(this)" onmouseleave="BackgroundChangeBack(this)" onclick="GetImage('usa.png')" > USA </span> <br>
+<span id="spain" onmouseenter="BackgroundChange(this)" onmouseleave="BackgroundChangeBack(this)" onclick="GetImage('spain.png')" > Spain </span> <br>
+</span>
+</span>
+
+
+<span id="B" style="position:absolute;top:30;left:950;font-size:150%" onmouseenter = "MyReveal('sports')" onmouseleave="MyCollapse('sports')" >
+Sports
+<span id="sports" style="visibility:hidden" > <br>
+<span id="football" onmouseenter="BackgroundChange(this)" onmouseleave="BackgroundChangeBack(this)" onclick="GetImage('football.png')" > Football </span> <br>
+<span id="cricket" onmouseenter="BackgroundChange(this)" onmouseleave="BackgroundChangeBack(this)" onclick="GetImage('cricket.png')" > Cricket </span> <br>
+<span id="rugby" onmouseenter="BackgroundChange(this)" onmouseleave="BackgroundChangeBack(this)" onclick="GetImage('rugby.png')" > Rugby </span> <br>
+</span>
+</span>
+
+
+
+<img id="pic"  >
+<!style="height:500;width:500;top:1000;left:850">
+
+</html>

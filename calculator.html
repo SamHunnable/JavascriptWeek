@@ -1,0 +1,112 @@
+<html>
+<script>
+var num1, num2, operation, result;
+var DisplayBox;
+
+function Setup() {
+	DisplayBox = window.document.f.A;
+	DisplayBox.value = "";	
+}
+
+function addColour(id) {
+	//var i = parseInt(place);
+	//window.document.forms[0].elements[i].style.backgroundColor= "red";
+	//var place = String(name);
+	//ndow.document.f.one.style.color = "red";
+	
+	//window.document.f.[name].style.color = "red";
+	
+	id.style.backgroundColor= "red";
+}
+
+function noColour(id) {
+	//var i = parseInt(place) - 1;
+    //window.document.f.name.style.color = "black";
+	//window.document.f.one.style.color = "black";
+	//window.document.forms[0].elements[i].style.backgroundColor = "white";
+	id.style.backgroundColor = "white";
+}
+
+function append(num) {
+	DisplayBox.value = DisplayBox.value + num;
+}
+
+function add() {
+	//num1 = DisplayBox.value;
+	//operation = 1;
+	//DisplayBox.value = 0;
+	DisplayBox.value = DisplayBox.value + "+";
+}
+
+function MyMinus() {
+	DisplayBox.value = DisplayBox.value + "-";
+}
+function MyMultiply() {
+	DisplayBox.value = DisplayBox.value + "*";
+}
+function MyDivide() {
+	DisplayBox.value = DisplayBox.value + "/";
+}
+
+function MyEquals() {
+/*
+	num2 = DisplayBox.value;
+	if (operation == 1) {
+		result = num1 + num2;
+	}
+	
+	DisplayBox.value = result;
+*/
+	//result = parseString(DisplayBox.value);
+	//DisplayBox.value = eval(parseString(DisplayBox.value));
+	DisplayBox.value = eval(DisplayBox.value);
+	//DisplayBox.value = eval('result');
+}
+
+function ClearScreen() {
+	num1=0;
+	num2=0;
+	DisplayBox.value = "";
+}
+
+</script>
+<body onload="Setup()">
+
+<form name = "f">
+<table border="1">
+
+	<tr>
+		<td colspan="4"> <input name="A" size="55" > </td>
+	</tr>
+	
+	<tr>
+		<td> <input id = "one" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(1)" value="1" style="height:100px;width:100;background-Color:white;font-size:300%"> </td>
+		<td> <input id = "two" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(2)" value="2" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "three" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(3)" value="3" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "plus" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="add()" value="+" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+
+	<tr>
+		<td> <input id = "four" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(4)" value="4" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "five" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(5)" value="5" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "six" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(6)" value="6" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "minus" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyMinus()" value="-" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+	
+	<tr>
+		<td> <input id = "seven" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(7)" value="7" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "eight" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(8)" value="8" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "nine" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(9)" value="9" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "multiply" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyMultiply()" value="x" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+	
+	<tr>
+		<td> <input id = "zero" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(0)" value="0" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "equals" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyEquals()" value="=" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "clear" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="ClearScreen()" value="c" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "divide" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyDivide()" value="/" style="height:100px;width:100;background-Color:white;font-size:300%" >    </td>
+	</tr>
+</form>
+
+</body>
+</html>

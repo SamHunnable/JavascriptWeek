@@ -1,0 +1,87 @@
+<html>
+<script>
+function Addition() {
+
+	if (window.document.f.A.value=="") {
+		window.alert("First number is missing");
+		window.document.f.A.focus();
+	}
+	else if (window.document.f.B.value=="") {
+		window.alert("Second number is missing");
+		window.document.f.B.focus();
+	}
+	else {
+		var N1=parseInt(window.document.f.A.value);
+		var N2=parseInt(window.document.f.B.value);
+		var result = N1 + N2;
+		window.document.f.C.value = result;
+	}
+}
+
+function Subtraction() {
+
+	if (window.document.f.A.value=="") {
+		window.alert("First number is missing");
+		window.document.f.A.focus();
+	}
+	else if (window.document.f.B.value=="") {
+		window.alert("Second number is missing");
+		window.document.f.B.focus();
+	}
+	else {
+		var N1=parseInt(window.document.f.A.value);
+		var N2=parseInt(window.document.f.B.value);
+		var result = N1 - N2;
+		window.document.f.C.value = result;
+	}
+}
+
+function Multiply() {
+
+	if (window.document.f.A.value=="") {
+		window.alert("First number is missing");
+		window.document.f.A.focus();
+	}
+	else if (window.document.f.B.value=="") {
+		window.alert("Second number is missing");
+		window.document.f.B.focus();
+	}
+	else {
+		var N1=parseInt(window.document.f.A.value);
+		var N2=parseInt(window.document.f.B.value);
+		var result = N1 * N2;
+		window.document.f.C.value = result;
+	}
+}
+
+function Divide() {
+
+	if (window.document.f.A.value=="") {
+		window.alert("First number is missing");
+		window.document.f.A.focus();
+	}
+	else if (window.document.f.B.value=="") {
+		window.alert("Second number is missing");
+		window.document.f.B.focus();
+	}
+	else {
+		var N1=parseInt(window.document.f.A.value);
+		var N2=parseInt(window.document.f.B.value);
+		var result = N1 / N2;
+		window.document.f.C.value = result;
+	}
+}
+
+</script>
+<h1> Welcome to my maths website</h1>
+<form name="f">
+Value 1: <input name="A"><br>
+Value 2: <input name="B"><br>
+<input type = "button" value="Add" onclick = "Addition()">
+<input type = "button" value="Subtract" onclick = "Subtraction()">
+<input type = "button" value="Multiply" onclick = "Multiply()">
+<input type = "button" value="Divide" onclick = "Divide()">
+<br>
+Result: <input name="C">
+</form>
+</html>

@@ -1,0 +1,106 @@
+<html>
+<script>
+function MSG() {
+var StartNumber, FinalString, x;
+FinalString = " ";
+x=0;
+	if (window.document.f.A.value=="") {
+		window.alert("First number is missing");
+		window.document.f.A.focus();
+	}
+
+	else {
+		StartNumber=parseInt(window.document.f.A.value);
+			
+		if(StartNumber>999) {
+			FinalString = ones(Math.floor(StartNumber/1000)) + " " + "thousand, ";
+			StartNumber = StartNumber%1000;
+			x=1;
+		}	
+		
+		if (StartNumber>99) {
+			FinalString = FinalString + ones(Math.floor(StartNumber/100)) + " " + "hundred";
+			StartNumber = StartNumber%100;
+			x=1;
+		}	
+		
+		if (x == 1 && StartNumber>0 && StartNumber<20) {
+			FinalString = FinalString + " and ";
+		}
+
+/*		
+		if( {
+			FinalString = FinalString + tens(Math.floor(StartNumber/10));
+			StartNumber = StartNumber%10;
+			FinalString = FinalString + " " +ones(StartNumber);
+*/
+			
+		if(StartNumber<20 && StartNumber>0) {
+			FinalString = FinalString + ones(Math.floor(StartNumber));
+			StartNumber = StartNumber%10;		
+		}
+		
+		
+		}
+		
+		window.document.f.B.value = FinalString;
+	}
+}
+
+function ones(number) {
+var Word;
+	switch(number) {
+		case 0: Word = " " ; break;
+		case 1: Word = "one" ; break;
+		case 2: Word = "two" ; break;
+		case 3: Word = "three" ; break;
+		case 4: Word = "four" ; break;
+		case 5: Word = "five" ; break;
+		case 6: Word = "six" ; break;
+		case 7: Word = "seven" ; break;
+		case 8: Word = "eight" ; break;
+		case 9: Word = "nine" ; break;
+		case 10: Word = "ten" ; break;
+		case 11: Word = "eleven" ; break;
+		case 12: Word = "twelve" ; break;
+		case 13: Word = "thirteen" ; break;
+		case 14: Word = "fourteen" ; break;
+		case 15: Word = "fifteen" ; break;
+		case 16: Word = "sixteen" ; break;
+		case 17: Word = "seventeen" ; break;
+		case 18: Word = "eighteen" ; break;
+		case 19: Word = "nineteen" ; break;
+	}
+	return Word;
+}
+
+
+function tens(number) {
+var Word;
+number = number*10;
+	switch(number) {
+		case 20: Word = "twenty" ; break;
+		case 30: Word = "thirty" ; break;
+		case 40: Word = "forty" ; break;
+		case 50: Word = "fifty" ; break;
+		case 60: Word = "sixty" ; break;
+		case 70: Word = "seventy" ; break;
+		case 80: Word = "eighty" ; break;
+		case 90: Word = "ninety" ; break;
+
+	}
+	return Word;
+}
+
+
+
+</script>
+<h1> Welcome to my number to string website</h1>
+<form name="f">
+Enter a number :<input name="A"><br>
+<input type = "button" value="To String" onclick = "MSG()"><br>
+As a String :<input name="B"><br>
+
+
+</form>
+</html>

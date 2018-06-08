@@ -1,0 +1,30 @@
+<html>
+<script>
+
+function CheckLogin() {
+	console.log("ran");
+	
+	var x = window.document.getElementById("u").value;
+	if(x== "") {
+		window.alert("user name is missing");
+		return false;
+	}
+	
+	if(window.document.getElementById("p").value == "") {
+		window.alert("password is missing");
+		return false;
+	}
+}
+</script>
+
+
+
+<form name="f" action="check.html" onSubmit="return CheckLogin()">
+UserName: <input type="textbox" name="uname" id="u"> <br>
+Password: <input type="password" name="password" id="p"> <br>
+<input type="submit" value="login">
+</form>
+
+
+
+</html>

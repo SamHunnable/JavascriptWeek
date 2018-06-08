@@ -1,0 +1,18 @@
+<html>
+<script>
+function MSG() {
+	var N1=parseInt(window.document.f.A.value);
+	var N2=parseInt(window.document.f.B.value);
+	var result = N1 + N2;
+	window.document.f.C.value = result;
+}
+
+</script>
+<h1> Welcome to my addition website</h1>
+<form name="f">
+<input name="A">
+<input name="B">
+<input name="C" value = "Sum of other two boxes">
+<input type = "button" value="Add" onclick = "MSG()">
+</form>
+</html>

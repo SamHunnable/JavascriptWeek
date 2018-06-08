@@ -1,0 +1,281 @@
+<html>
+<script>
+var operation, calculation, MValue;
+var DisplayBox, AnswerBox, FeaturesA, FeaturesB;
+
+function MySetup() {
+	DisplayBox = window.document.f.A;
+	AnswerBox = window.document.f.B;
+	FeaturesA = window.document.getElementById("memory");
+	FeaturesB = window.document.getElementById("angles");	
+	MValue = 0;
+	ClearScreen();
+	DisplayBox.focus();
+}
+
+function addColour(id) {
+	id.style.backgroundColor= "red";
+}
+function noColour(id) {
+	id.style.backgroundColor = "white";
+}
+
+function MakeSimple() {
+	FeaturesA.style.visibility = "hidden";
+	FeaturesB.style.visibility = "hidden";
+}
+function MakeComplicated() {
+	FeaturesA.style.visibility = "visible";
+	FeaturesB.style.visibility = "visible";
+}
+
+function append(num) {
+	if (DisplayBox.value == 0) {
+		DisplayBox.value = num;
+		calculation = calculation + String(num);
+	}
+	else {
+	DisplayBox.value = DisplayBox.value + num;
+	calculation = calculation + String(num);
+	}
+}
+function appendDot() {
+	var str = String(DisplayBox.value);
+	var dotCheck = str.includes(".");
+	console.log("dotCheck is " + dotCheck);
+	if (dotCheck == true) {
+		window.alert("Only one decimal point allowed");
+	}
+	else {
+		DisplayBox.value = DisplayBox.value + ".";
+		calculation = calculation + ".";
+	}
+}
+
+function MyAdd() {
+	calculation = DisplayBox.value + "+";
+	DisplayBox.value = "";
+}
+function MyMinus() {
+	calculation = DisplayBox.value + "-";
+	DisplayBox.value = "";
+}
+function MyMultiply() {
+	calculation = DisplayBox.value + "*";
+	DisplayBox.value = "";
+}
+function MyDivide() {
+	calculation = DisplayBox.value + "/";
+	DisplayBox.value = "";
+}
+
+function MemoryRetrieve() {
+	DisplayBox.value = MValue;
+}
+function MemoryAdd() {
+	MValue = parseFloat(MValue) + parseFloat(DisplayBox.value);
+	DisplayBox.value = MValue;
+}
+function MemoryMinus() {
+	MValue = parseFloat(MValue) - parseFloat(DisplayBox.value);
+	DisplayBox.value = MValue;
+}
+function MemoryClear() {
+	MValue = 0;
+}
+
+function MySin() {
+	AnswerBox.value = Math.sin(parseFloat(DisplayBox.value));
+}
+function MyCos() {
+	AnswerBox.value = Math.cos(parseFloat(DisplayBox.value));
+}
+function MyTan() {
+	AnswerBox.value = Math.tan(parseFloat(DisplayBox.value));
+}
+
+function MyEquals() {
+
+	if (DisplayBox.value=="") {
+		window.alert("There is nothing to calculate");
+		DisplayBox.focus();
+	}
+	else {
+		calculation = String(calculation);
+		console.log("string to be calculated " + calculation);
+		DisplayBox.value = parseFloat(eval(calculation));
+		ToText();
+	}
+}
+
+function ClearScreen() {
+	calculation="";
+	DisplayBox.value = "";
+	AnswerBox.value = "";
+}
+
+function ToText() {
+var StartNumber, FinalString, x;
+FinalString = " ";
+x=0;
+	StartNumber = parseFloat(DisplayBox.value);
+	
+	console.log("number in ToText " + StartNumber);
+			
+	if(StartNumber>999) {
+		FinalString = ones(Math.floor(StartNumber/1000)) + " " + "thousand, ";
+		StartNumber = StartNumber%1000;
+		x=1;
+	}	
+		
+	if (StartNumber>99) {
+		FinalString = FinalString + ones(Math.floor(StartNumber/100)) + " " + "hundred";
+		StartNumber = StartNumber%100;
+		x=1;
+	}	
+		
+	if (x == 1 && StartNumber != 0) {
+		FinalString = FinalString + " and ";
+	}
+		
+		
+	if(StartNumber >= 20) {
+		FinalString = FinalString + tens(Math.floor(StartNumber/10));
+		StartNumber = StartNumber%10;
+		console.log("number in >20 if statement going into ones " + StartNumber);
+		FinalString = FinalString + " " +ones(Math.floor(StartNumber));		
+	}
+		
+	else if(StartNumber<20 && StartNumber >= 0) {
+		console.log("number in 0-20 if statement " + StartNumber);
+		FinalString = FinalString + ones(Math.floor(StartNumber));
+				
+	}
+
+	StartNumber = StartNumber*10;	
+	StartNumber = StartNumber%10;
+	StartNumber = Math.round(StartNumber *100)/100;	
+	
+	if (StartNumber != 0) {
+	FinalString = FinalString + " point";
+		for(var i =0;i<2;i++) {												//Arbitrarily held at 2 as per requirement
+				console.log("number in decimal if statement " + StartNumber);
+				FinalString = FinalString + " " + ones(Math.floor(StartNumber));
+				StartNumber = StartNumber*10;
+				StartNumber = StartNumber%10;		
+		}
+	}
+		
+	AnswerBox.value = FinalString;
+}
+function ones(number) {
+var Word;
+	switch(number) {
+		case 0: Word = "zero" ; break;
+		case 1: Word = "one" ; break;
+		case 2: Word = "two" ; break;
+		case 3: Word = "three" ; break;
+		case 4: Word = "four" ; break;
+		case 5: Word = "five" ; break;
+		case 6: Word = "six" ; break;
+		case 7: Word = "seven" ; break;
+		case 8: Word = "eight" ; break;
+		case 9: Word = "nine" ; break;
+		case 10: Word = "ten" ; break;
+		case 11: Word = "eleven" ; break;
+		case 12: Word = "twelve" ; break;
+		case 13: Word = "thirteen" ; break;
+		case 14: Word = "fourteen" ; break;
+		case 15: Word = "fifteen" ; break;
+		case 16: Word = "sixteen" ; break;
+		case 17: Word = "seventeen" ; break;
+		case 18: Word = "eighteen" ; break;
+		case 19: Word = "nineteen" ; break;
+	}
+	return Word;
+}
+function tens(number) {
+var Word;
+number = number*10;
+	switch(number) {
+		case 20: Word = "twenty" ; break;
+		case 30: Word = "thirty" ; break;
+		case 40: Word = "forty" ; break;
+		case 50: Word = "fifty" ; break;
+		case 60: Word = "sixty" ; break;
+		case 70: Word = "seventy" ; break;
+		case 80: Word = "eighty" ; break;
+		case 90: Word = "ninety" ; break;
+
+	}
+	return Word;
+}
+
+</script>
+
+<body onload="MySetup()">
+
+<form name = "f">
+<table border="1">
+
+	<tr>
+		<td colspan="4"> <input name="A" size="56" > </td>
+	</tr>
+	
+	<tr>
+		<td colspan="4"> <input name="B" size="56" > </td>
+	</tr>
+	
+	<tr>
+		<td colspan="2"> <input id = "simple" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MakeSimple()" value="Simple" style="height:100px;width:210;background-Color:white;font-size:200%"> </td>
+		<td colspan="2"> <input id = "advanced" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MakeComplicated()" value="Advanced" style="height:100px;width:210;background-Color:white;font-size:200%" > </td>
+	</tr>
+	
+	<tr>
+		<td> <input id = "one" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(1)" value="1" style="height:100px;width:100;background-Color:white;font-size:300%"> </td>
+		<td> <input id = "two" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(2)" value="2" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "three" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(3)" value="3" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "plus" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyAdd()" value="+" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+
+	<tr>
+		<td> <input id = "four" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(4)" value="4" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "five" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(5)" value="5" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "six" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(6)" value="6" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "minus" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyMinus()" value="-" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+	
+	<tr>
+		<td> <input id = "seven" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(7)" value="7" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "eight" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(8)" value="8" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "nine" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(9)" value="9" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "multiply" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyMultiply()" value="x" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+	
+	<tr>
+		<td> <input id = "zero" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="append(0)" value="0" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "equals" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyEquals()" value="=" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "clear" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="ClearScreen()" value="c" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "divide" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyDivide()" value="/" style="height:100px;width:100;background-Color:white;font-size:300%" >    </td>
+	</tr>
+	
+	<tr id="angles">
+		<td> <input id = "sin" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MySin()" value="sin" style="height:100px;width:100;background-Color:white;font-size:300%"> </td>
+		<td> <input id = "cos" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyCos()" value="cos" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "tan" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MyTan()" value="tan" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "dot" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="appendDot()" value="." style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+	
+		<tr id="memory">
+		<td> <input id = "mRetrieve" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MemoryRetrieve()" value="MR" style="height:100px;width:100;background-Color:white;font-size:300%"> </td>
+		<td> <input id = "mAdd" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MemoryAdd()" value="M+" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "mMinus" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MemoryMinus()" value="M-" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+		<td> <input id = "mClear" type = "button" onmouseenter = "addColour(this)" onmouseleave="noColour(this)" onclick="MemoryClear()" value="MC" style="height:100px;width:100;background-Color:white;font-size:300%" > </td>
+	</tr>
+	
+</table>
+
+</form>
+
+</body>
+</html>

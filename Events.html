@@ -1,0 +1,27 @@
+<html>
+
+<script>
+
+function MyMove() {
+	var s=window.document.getElementById("A");
+	s.style.top=window.event.clientY;
+	s.style.left=window.event.clientX;
+}
+
+function Runaway() {
+	var box = window.document.getElementById("B");
+	var pos1,pos2;
+	pos1 = Math.random()*1000;
+	pos2 = Math.random()*1000;
+	box.style.top = pos1 + "px";
+	box.style.left = pos2 +"px";
+}
+
+</script>
+<body onmousemove="MyMove()">
+<span id="A" style="position:absolute;top:0;left:0" >
+QA Consulting
+</span>
+<input id="B" type="button" value="Click Me" onmouseenter="Runaway()" style="position:absolute;top:0;left:0"> <br>
+</body>
+</html>
